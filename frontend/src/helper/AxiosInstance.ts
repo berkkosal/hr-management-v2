@@ -59,3 +59,5 @@ export const axiosPut = async (url: string, data?: any, headers?: any, params?: 
   });
   return response;
 }
+
+axios.defaults
