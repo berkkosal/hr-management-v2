@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Routes } from 'react-router-dom';
-import LoginPage from './pages/LoginPage';
+import { Routes } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material';
 import theme from './utils/theme/GlobalTheme'
 class BlogRouter extends Component {
@@ -10,7 +9,7 @@ class BlogRouter extends Component {
         return (
             <ThemeProvider theme={theme}>
                 <Routes>
-                    <Route path='/login' element={<LoginPage />} />
+
                 </Routes>
             </ThemeProvider>
         )
