@@ -62,7 +62,7 @@ function DrawerAppBar(props) {
   //Use useNavigate when you need to navigate based on some event or condition within a component. 
   //This is useful for cases where you want to navigate programmatically, such as after a form submission or based on some conditional logic.
 
-
+  //Deneme metodu
   const getComments = async () => {
     try {
       const response = await axiosGet("https://jsonplaceholder.typicode.com/comments")
