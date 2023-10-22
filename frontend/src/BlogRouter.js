@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material';
 import theme from './utils/theme/GlobalTheme'
 import HomePageContainer from './pages/HomePage/HomePageContainer'
-import Header from './common/components/Header';
 import Header2 from './common/components/Header2';
 
 import RegisterPageContainer from './pages/RegisterPage/RegisterPageContainer';
