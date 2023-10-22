@@ -1,5 +1,4 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
@@ -13,7 +12,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { axiosGet } from '../../helper/AxiosInstance.ts';
 
 const drawerWidth = 240;
 const navItems = ['Login', 'Register', 'Contact'];
@@ -21,9 +21,11 @@ const navItems = ['Login', 'Register', 'Contact'];
 function DrawerAppBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
+    getComments();
   };
 
   const drawer = (
@@ -36,7 +38,7 @@ function DrawerAppBar(props) {
         {navItems.map((item) => (
           <Link key={item} to={`/${item.toLowerCase()}`}>
             <ListItem key={item} disablePadding>
-
+          
               <ListItemButton sx={{ textAlign: 'center' }}>
 
                 <ListItemText primary={item} />
@@ -51,6 +53,27 @@ function DrawerAppBar(props) {
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
+
+  //Redirect
+  const navigate = useNavigate();
+
+  //Kendime not:
+  //Use Link when you want to create a clickable element (like a button or a text link) that takes the user to a different page.
+  //Use useNavigate when you need to navigate based on some event or condition within a component. 
+  //This is useful for cases where you want to navigate programmatically, such as after a form submission or based on some conditional logic.
+
+
+  const getComments = async () => {
+    try {
+      const response = await axiosGet("https://jsonplaceholder.typicode.com/comments")
+      if (response.status === 200 ) {
+        navigate("/login")
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -109,12 +132,6 @@ function DrawerAppBar(props) {
   );
 }
 
-DrawerAppBar.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func,
-};
+
 
 export default DrawerAppBar;
