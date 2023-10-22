@@ -4,6 +4,8 @@ import { ThemeProvider } from '@mui/material';
 import theme from './utils/theme/GlobalTheme'
 import HomePageContainer from './pages/HomePage/HomePageContainer'
 import Header from './common/components/Header';
+import Header2 from './common/components/Header2';
+
 import RegisterPageContainer from './pages/RegisterPage/RegisterPageContainer';
 import LoginPageContainer from './pages/LoginPage/LoginPageContainer';
 
@@ -13,7 +15,9 @@ class BlogRouter extends Component {
     render() {
         return (
             <ThemeProvider theme={theme}>
-                <Header />
+                
+                <Header2 />
+
                 <Routes>
                     <Route path='/' element={<HomePageContainer />} />
                     <Route path='/login' element={<LoginPageContainer/>} />
