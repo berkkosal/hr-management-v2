@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 function HomePageContainer() {
 
 
+  let token = localStorage.getItem("token")
 
 
   
