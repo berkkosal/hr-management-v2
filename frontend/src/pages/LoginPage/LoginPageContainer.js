@@ -11,9 +11,10 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../reducers/userReducer';
 import { useNavigate } from 'react-router-dom';
+import { Alert } from '@mui/material';
 
 
 
@@ -24,6 +25,8 @@ export default function SignIn() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const { loading, error } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -108,8 +111,11 @@ export default function SignIn() {
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Sign In
+            {loading ? 'Loading...' : 'Sign In'}
           </Button>
+          {error && (
+            <Alert severity='error'>{error}</Alert>
+          )}
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
