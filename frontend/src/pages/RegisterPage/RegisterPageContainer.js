@@ -83,6 +83,18 @@ export default function SignUp() {
                   autoComplete="new-password"
                 />
               </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                required
+                fullWidth
+                name="phone"
+                label="Phone"
+                type="tel"
+                id="phone"
+                />
+              </Grid>
+
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
