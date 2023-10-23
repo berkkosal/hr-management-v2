@@ -16,12 +16,13 @@ const configuration = {
 const axiosInstance = axios.create({ ...configuration });
 
 axiosInstance.interceptors.request.use(config => {
-  if (localStorage.token) {
-    try {
-      config.headers.Authorization = `Bearer ${JSON.parse(localStorage.token).accessToken
-        }`;
-    } catch (error) { }
-  }
+  var token = localStorage.getItem("token");
+  console.log(token);
+  
+  try {
+    config.headers.Authorization = `Bearer ${token}`;
+  } catch (error) { }
+
   return config;
 });
 
@@ -44,7 +45,7 @@ export const axiosPost = async (url: string, data?: any, headers?: any, params?:
   return response;
 }
 
-export const axiostDelete = async (url:string, headers?: any, params?: any) => {
+export const axiostDelete = async (url: string, headers?: any, params?: any) => {
   const response = await axiosInstance.delete(url, {
     headers,
     params
@@ -60,4 +61,3 @@ export const axiosPut = async (url: string, data?: any, headers?: any, params?: 
   return response;
 }
 
-axios.defaults
