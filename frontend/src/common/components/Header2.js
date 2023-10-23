@@ -65,7 +65,7 @@ function DrawerAppBar(props) {
   //Deneme metodu
   const getComments = async () => {
     try {
-      const response = await axiosGet("https://jsonplaceholder.typicode.com/comments")
+      const response = await axiosGet("https://www.google.com/")
       if (response.status === 200 ) {
         navigate("/login")
       }
@@ -76,7 +76,7 @@ function DrawerAppBar(props) {
   
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', backgroundColor:'aqua'}}>
       <AppBar component="nav">
         <Toolbar>
           <IconButton
@@ -125,9 +125,11 @@ function DrawerAppBar(props) {
           {drawer}
         </Drawer>
       </nav>
-      <Box component="main" sx={{ p: 3 }}>
+
+      {/* Ne işe yaradığını anlamadım. Layout düzenlerken kaldırmak zorunda kaldım. */}
+      {/* <Box component="main" sx={{ p: 3 }}>
         <Toolbar />
-      </Box>
+      </Box> */}
     </Box>
   );
 }
