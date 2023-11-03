@@ -1,6 +1,5 @@
 import { Box, Button, Stack, Typography } from '@mui/material';
 import React, { useEffect } from 'react'
-import './homepage.css';
 import { Link } from 'react-router-dom';
 
 
@@ -14,12 +13,12 @@ function HomePageContainer() {
   let token = localStorage.getItem("token")
 
 
-  
+
 
   return (
     <>
 
-      {token != null ?(
+      {token != null ? (
         <>
 
 
